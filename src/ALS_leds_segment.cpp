@@ -1,7 +1,10 @@
 #include "ALS_leds_segment.h"
 
+leds_segemnt_runtime::leds_segemnt_runtime(){
 
-leds_segemnts		* leds_segemntsArray[4];
+}
+
+leds_segemnts		* leds_segemntsArray[10];
 int 				leds_segemntsArray_pos	= 0;
 
 leds_segemnts::leds_segemnts(uint32_t start, uint32_t end, boolean dir){
@@ -20,6 +23,7 @@ leds_segment::leds_segment(){
 }
 void leds_segment::segemnt_new(uint32_t start, uint32_t end, boolean dir){
 	new leds_segemnts(start, end, dir);
+	new leds_segemnt_runtime();
 }
 void leds_segment::segemnt_max(uint8_t &  max){
 	max = leds_segemntsArray_pos;

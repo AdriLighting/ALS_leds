@@ -4,19 +4,34 @@
 	#include <Arduino.h>
 
 
-
+	class leds_segemnt_runtime
+	{
+		
+	public:
+            unsigned long   next_time;
+            uint32_t         step;
+            uint32_t        counter_mode_step;
+            uint32_t        counter_mode_call;
+            uint8_t         aux_param;   // auxilary param (usually stores a color_wheel index)
+            uint8_t         aux_param2;  // auxilary param (usually stores bitwise options)
+            uint16_t        aux_param3; // auxilary param (usually stores a segment index)
+		leds_segemnt_runtime();
+		~leds_segemnt_runtime(){};
+		
+	};
 	class leds_segemnts
 	{
 		
 	public:
 		uint32_t 		_start;
 		uint32_t 		_stop;
-		unsigned long 	_next_time;
-		uint32_t 		_step;
-		uint32_t 		_call;
-		uint16_t 		_aux0;
-		uint16_t 		_aux1;	
 		boolean 		_reverse;
+		uint16_t    	_speed;
+		uint8_t     	_mode;
+		uint8_t     	_options;
+		uint8_t     	_intensity;
+		uint8_t     	_fade;
+		uint32_t    	_colors[3];		
 		leds_segemnts(uint32_t start, uint32_t end, boolean dir);
 		~leds_segemnts(){};
 		

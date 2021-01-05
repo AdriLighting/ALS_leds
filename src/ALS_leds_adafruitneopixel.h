@@ -95,4 +95,5 @@
 	};
 	leds_setting * leds_settingPtr_get();
 	leds_setting * leds_setting_ptr_set(leds_setting * ptr);
+	
 #endif

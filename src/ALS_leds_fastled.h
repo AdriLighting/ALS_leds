@@ -14,6 +14,9 @@
 	FASTLED_USING_NAMESPACE
 	// #define FASTLED_INTERRUPT_RETRY_COUNT 1
 
+	#include <ALS_neomatrix.h>
+	#include <ALS_matrixRGB.h>
+
 	class ledsBase
 	{	
 
@@ -89,15 +92,14 @@
 
 	class leds_setting
 	{
-
+	public:
+		ledsBase 	* _myLed;
 		int 		_num_leds;
 		int 		_num_leds_w;
 		int 		_num_leds_h;
+		MyNeoMatrix		* _neoMatrix 	= nullptr;
+		ALS_matrixRGB	* _myMatrix 	= nullptr;
 		int 		_rotation;
-
-	public:
-		ledsBase 	* _myLed;
-
 
 		// leds_setting(){};
 		leds_setting(ledsBase * myLed){
@@ -106,6 +108,18 @@
 			_num_leds_w = myLed->_num_leds_w;
 			_num_leds_h = myLed->_num_leds_h;
 			_rotation 	= myLed->_rotation;
+			_neoMatrix = new MyNeoMatrix(myLed->_leds, _num_leds_w, _num_leds_h,
+				myLed->_matrixType
+				// 15 // PANEL
+				// NEO_MATRIX_BOTTOM + NEO_MATRIX_LEFT + NEO_MATRIX_ROWS + NEO_MATRIX_PROGRESSIVE //TOWER
+				);
+			_neoMatrix->_leds 		= myLed->_leds;
+			_neoMatrix->_numLeds 	= _num_leds;
+			_neoMatrix->_matrixW 	= _num_leds_w;
+			_neoMatrix->_matrixH 	= _num_leds_h;	
+			_neoMatrix->setRotation(_rotation); //PANEL = 2 | TOWER = 3
+			_myMatrix = new ALS_matrixRGB(_num_leds_w, _num_leds_h, _num_leds, _num_leds_w);
+
 		};
 
 
@@ -131,4 +145,5 @@
 	};	
 	leds_setting * leds_settingPtr_get();
 	leds_setting * leds_setting_ptr_set(leds_setting * ptr);	
+	CRGB 	* stripArray_get();
 #endif
