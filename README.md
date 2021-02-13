@@ -1,6 +1,6 @@
 # ALS_leds
 
-leds driver library management for ALS_server.
+leds driver library management for ALS_server..
 
 <pre>
 Librairies
