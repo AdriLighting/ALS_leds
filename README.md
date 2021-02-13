@@ -2,16 +2,12 @@
 
 leds driver library management for ALS_server.
 
-
 <pre>
 Librairies
 <details>
 ALS_leds                        = https://github.com/AdriLighting/ALS_leds
 ALS_matrixRGB                   = https://github.com/AdriLighting/ALS_matrixRGB
 ALS_neomatrix                   = https://github.com/AdriLighting/ALS_neomatrix
-
-esp8266/arduino                 = https://github.com/esp8266/Arduino/tree/master/libraries
-
 Adafruit BusIO                  = https://github.com/adafruit/Adafruit_BusIO
 FastLED                         = https://github.com/FastLED/FastLED
 EspSoftwareSerial               = https://github.com/plerup/espsoftwareserial
